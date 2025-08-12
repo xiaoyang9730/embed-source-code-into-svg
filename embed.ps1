@@ -57,3 +57,7 @@ if ($decoded -ne $src) {
 Write-Host "`nEmbedding completed"
 Write-Host "Source: $srcFilePath"
 Write-Host "Target: $targetFilePath"
+
+Write-Host "`nExtract source code from embeded svg file"
+Write-Host "========================================="
+Invoke-Expression  "./extract.ps1 $targetFilePath"
