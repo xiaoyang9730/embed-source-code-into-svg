@@ -11,11 +11,11 @@
 使用 `embed.ps1` 生成嵌入代码的同名 SVG 文件.
 
 ```powershell
-embed.ps1 source.typ
+embed.ps1 math.typ
 ```
 
 使用 `extract.ps1` 从嵌入代码的 SVG 文件中提取代码.
 
 ```powershell
-extract.ps1 graph.svg > source.typ
+extract.ps1 math.svg > extracted.typ
 ```
