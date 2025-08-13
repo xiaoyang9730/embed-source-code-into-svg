@@ -17,5 +17,11 @@ embed.ps1 math.typ
 使用 `extract.ps1` 从嵌入代码的 SVG 文件中提取代码.
 
 ```powershell
-extract.ps1 math.svg > extracted.typ
+extract.ps1 math.svg > extracted_source_code.typ
+```
+
+如果 SVG 文件中包含 base64 编码的图片, 可通过 `-imageDir` 参数指定一个文件夹用于保存提取出的图片. 不使用该参数时, 不会对图片进行提取.
+
+```powershell
+extract.ps1 math.svg -imageDir .\extracted_images > extracted_source_code.typ
 ```
