@@ -3,7 +3,8 @@
 param (
     [Parameter(Mandatory=$true)]
     [string]$path,
-    [string]$tmpFileName = "__tmpfile.svg"
+    [string]$tmpFileName = "__tmpfile.svg",
+    [string]$imageDir = $null
 )
 
 $srcFilePath = Resolve-Path -Path $path 2> $null
@@ -58,7 +59,12 @@ Write-Host "`nEmbedding completed"
 Write-Host "Source: $srcFilePath"
 Write-Host "Target: $targetFilePath"
 
-Write-Host "`nExtract source code from embeded svg file"
+Write-Host "`nExtracting from embeded svg file"
 Write-Host "========================================="
 $extractScript = Join-Path -Path (Split-Path -Parent $PSCommandPath) -ChildPath "extract.ps1"
-Invoke-Expression  "$extractScript $targetFilePath"
+if ([string]::IsNullOrEmpty($imageDir)) {
+    $extractedSourceCode = Invoke-Expression "$extractScript -path $targetFilePath"
+} else {
+    $extractedSourceCode = Invoke-Expression "$extractScript -path $targetFilePath -imageDir $imageDir"
+}
+Write-Host "Extracted source code:`n$extractedSourceCode"
