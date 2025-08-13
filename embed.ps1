@@ -60,4 +60,5 @@ Write-Host "Target: $targetFilePath"
 
 Write-Host "`nExtract source code from embeded svg file"
 Write-Host "========================================="
-Invoke-Expression  "./extract.ps1 $targetFilePath"
+$extractScript = Join-Path -Path (Split-Path -Parent $PSCommandPath) -ChildPath "extract.ps1"
+Invoke-Expression  "$extractScript $targetFilePath"
