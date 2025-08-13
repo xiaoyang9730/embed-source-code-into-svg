@@ -88,7 +88,7 @@ foreach ($prefix in $namespaces.Keys) {
 
 $imageElements = $svgXml.SelectNodes("//svg:image", $namespaceManager)
 
-Write-Host "Found $($imageElements.Length) image nodes"
+Write-Host "Found $($imageElements.Count) image nodes"
 $pattern = "^data:image/([^;]+);([^,]+),(.*)$"
 $svgFileName = [System.IO.Path]::GetFileName($path)
 $image_cnt = 0
