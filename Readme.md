@@ -8,11 +8,23 @@
 
 ##  Usage
 
+### Embed
+
 使用 `embed.ps1` 生成嵌入代码的同名 SVG 文件.
 
 ```powershell
 embed.ps1 math.typ
 ```
+
+嵌入结束后, 脚本会自动调用 `extract.ps1` 从生成的 SVG 文件中提取嵌入的代码并打印输出, 便于用户检查嵌入和提取的正确性.
+
+如果 SVG 文件中包含 base64 编码的图片, 可通过 `-imageDir` 参数指定一个文件夹用于保存提取出的图片. 不使用该参数时, 不会对图片进行提取.
+
+```powershell
+embed.ps1 math.svg -imageDir .\extracted_images
+```
+
+### Extract
 
 使用 `extract.ps1` 从嵌入代码的 SVG 文件中提取代码.
 
